@@ -5,6 +5,8 @@ import { addPoint } from "../utils/chart";
 function Ticker() {
   const [price, setPrice] = useState({ value: 0, ticks: 0 });
   const [color, setColor] = useState("black");
+
+  // create the ref and set its initial value
   const prevPrice = useRef(price);
   const canvasRef = useRef();
 
@@ -30,6 +32,8 @@ function Ticker() {
     } else {
       setColor("black");
     }
+
+    // set the new value of the ref (note: this doesn't trigger a re-render)
     prevPrice.current = price;
   }, [price]);
 
